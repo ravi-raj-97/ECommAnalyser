@@ -1,0 +1,80 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
+<link href="default.css" rel="stylesheet" type="text/css" media="all" />
+<link href="fonts.css" rel="stylesheet" type="text/css" media="all" />
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/default.css') }}">
+
+</head>
+<body>
+<div id="header-wrapper">
+	<div id="header" class="container">
+		<div id="logo">
+			<h1><a href="#">View List</a></h1>
+			<span>A DBMS Project</span>
+		</div>
+		<div id="triangle-up"></div>
+	</div>
+</div>
+<div id="menu-wrapper">
+		<div id="menu">
+			<ul>
+				<li><a href="home" accesskey="3" title="">home</a></li>
+				<li class="current_page_item"><a href="sites" accesskey="1" title="">Websites</a></li>
+				<li><a href="categories" accesskey="2" title="">Our Categorisation</a></li>
+				
+				<li><a href="modify" accesskey="4" title="">Modify</a></li>
+			</ul>
+		</div>
+</div>
+<div id="wrapper">
+	<br><br>
+	<font size="5">
+	<form action="#">
+	<center>
+	<table border="1">
+		<caption>Result of Search</caption>
+	<tr>
+	<th>Item ID</th>
+	<th>Item Name</th>
+	<th>No of Views(Annual)</th>
+	<th>Price</th>
+	<th>Months(for sales & rating)</th>
+	<th>No of Units Sold</th>
+	<th>No of Stars</th>
+	</tr>
+	{% for i in range(0,it) %}
+	<tr>
+		<td rowspan="4">{{queryresult[0+(4*i)][0]}}</td>
+		<td rowspan="4">{{queryresult[0+(4*i)][1]}}</td>
+		<td rowspan="4">{{queryresult[0+(4*i)][2]}}</td>
+		<td rowspan="4">{{queryresult[0+(4*i)][3]}}</td>
+		{% if i<(len-3) %}
+		{% for row in range((4*i),((4*i)+4)) %}
+			<td>{{queryresult[row][4]}}</td>
+			<td>{{queryresult[row][5]}}</td>
+			<td>{{queryresult[row][6]}}</td>
+			</tr>
+		{% endfor %}
+		{% endif %}
+	</tr>
+	{% endfor %}
+	</table>
+	<br><br>
+	<a href="itemlist" class="button1" role="button">Back</a>
+	</center>
+	</form>
+	</font>
+	<br><br><br>
+</div>
+<div id="stamp" class="container">
+	<div class="hexagon"><span class="icon icon-wrench"></span></div>
+</div>
+<div id="copyright" class="container">
+	<p>&copy; Animesh Mohan and Ch Ravi Raj. All rights reserved.</p>
+</div>
+</body>
+</html>
